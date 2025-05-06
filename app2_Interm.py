@@ -11,7 +11,6 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import google.generativeai as genai
 #enter your api key
-# Configure Gemini AI
 genai.configure(api_key="")
 model = genai.GenerativeModel("models/gemini-1.5-flash")
 geolocator = Nominatim(user_agent="fir_app")
@@ -22,25 +21,21 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
-# Load animations
 lottie_left = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_jtbfg2nb.json")
 lottie_right = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_zrqthn6o.json")
 
-# Layout with animations
 left_col, spacer, right_col = st.columns([1, 0.45, 1])
 with left_col:
     st_lottie(lottie_left, speed=3, loop=True, quality="high", height=600, key="left-lottie")
 with right_col:
     st_lottie(lottie_right, speed=5, loop=True, quality="high", height=600, key="right-lottie")
 
-# Load IPC data
 ipc_df = pd.read_csv("ipc_sections.csv")
 ipc_df.fillna('', inplace=True)
 ipc_df['Offense'] = ipc_df['Offense'].astype(str).str.lower()
 encoder = SentenceTransformer('all-MiniLM-L6-v2')
 ipc_embeddings = encoder.encode(ipc_df['Offense'].tolist())
 
-# Database setup
 conn = sqlite3.connect("fir_records.db", check_same_thread=False)
 cursor = conn.cursor()
 cursor.execute("""
@@ -160,7 +155,6 @@ def get_legal_advice(query, ipc_section=None, offense=None):
 
 st.title("📝 FIR Generator & Legal Advisor")
 
-# Create tabs for different functionalities
 tab1, tab2 = st.tabs(["📄 FIR Generator", "⚖️ Legal Advisor"])
 
 with tab1:
@@ -222,11 +216,9 @@ with tab2:
     st.header("AI Legal Advisor")
     st.write("Get legal advice for your situation. You can ask general questions or get specific advice based on an existing FIR.")
     
-    # Option to link with existing FIR
     use_existing_fir = st.checkbox("Connect to an existing FIR record")
     
     if use_existing_fir:
-        # Get user's previous FIRs
         if user_name and user_name.strip():
             user_firs = pd.read_sql_query(
                 f"SELECT id, timestamp, offense, ipc_section FROM fir_logs WHERE user_name = ? ORDER BY timestamp DESC",
@@ -234,7 +226,6 @@ with tab2:
             )
             
             if not user_firs.empty:
-                # Create a list of options with FIR details
                 fir_options = [
                     f"FIR #{row['id']} - {row['offense']} (Filed: {row['timestamp'][:10]})" 
                     for _, row in user_firs.iterrows()
@@ -245,10 +236,8 @@ with tab2:
                     fir_options
                 )
                 
-                # Get the index of the selected FIR
                 selected_index = fir_options.index(selected_fir)
                 
-                # Get the corresponding FIR details
                 ipc_section = user_firs.iloc[selected_index]['ipc_section']
                 offense = user_firs.iloc[selected_index]['offense']
             else:
@@ -272,7 +261,6 @@ with tab2:
                 st.markdown("### Legal Advice")
                 st.markdown(advice)
                 
-                # Add disclaimer
                 st.markdown("""
                 <div style="background-color: #fff3cd; padding: 10px; border-radius: 5px; margin-top: 20px;">
                 <strong>⚠️ Important Disclaimer:</strong> This AI-generated legal advice is for informational purposes only 
@@ -283,6 +271,4 @@ with tab2:
                 """, unsafe_allow_html=True)
         else:
             st.warning("Please describe your legal situation or question.")
-
-# Close database connection when done
 conn.close()
