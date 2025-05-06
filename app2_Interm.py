@@ -10,9 +10,9 @@ from geopy.geocoders import Nominatim
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import google.generativeai as genai
-
+#enter your api key
 # Configure Gemini AI
-genai.configure(api_key="AIzaSyCBrp6xM8ZI8vbQo1mGtjvu4T0W8A0DExk")
+genai.configure(api_key="")
 model = genai.GenerativeModel("models/gemini-1.5-flash")
 geolocator = Nominatim(user_agent="fir_app")
 
