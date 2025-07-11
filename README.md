@@ -42,5 +42,20 @@ Output (Note: Latest ones to be updated soon):
 # First Build Look
 ![Out-1](https://github.com/user-attachments/assets/37cc3c9c-0819-4135-bfda-52b0dda1359c)
 
-# User Authentication
+User Authentication
 ![Out-2](https://github.com/user-attachments/assets/8ce4ba9b-233c-43af-b19f-836d94425475)
+
+FIR Generator
+<img width="1920" height="1024" alt="Screenshot (2062)" src="https://github.com/user-attachments/assets/bab52b9c-06bc-4df6-a8f4-3c7a50d28e99" />
+
+FIR Reported
+<img width="1920" height="1024" alt="Screenshot (2057)" src="https://github.com/user-attachments/assets/f347cc8a-f28e-43f6-9739-8a19f3d585f9" />
+
+Legal Advisor
+<img width="1920" height="1024" alt="Screenshot (2058)" src="https://github.com/user-attachments/assets/6aa557c3-59b5-4575-ba05-e4e472bc2a45" />
+
+Legal Advice- I
+<img width="1920" height="1024" alt="Screenshot (2059)" src="https://github.com/user-attachments/assets/ee0691aa-31e0-4d6f-a934-0064951a8401" />
+
+Legal Advice- II
+<img width="1920" height="1024" alt="Screenshot (2061)" src="https://github.com/user-attachments/assets/7e12cd04-1515-4b0e-85fe-b181fa01a663" />
