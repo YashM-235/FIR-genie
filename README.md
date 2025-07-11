@@ -37,3 +37,10 @@ Data Handling	CSV (IPC Sections), Pandas
 Geo Services	Geolocation APIs
 
 Deployment	Local/Streamlit Cloud
+
+Output (Note: Latest ones to be updated soon):
+# First Build Look
+![Out-1](https://github.com/user-attachments/assets/37cc3c9c-0819-4135-bfda-52b0dda1359c)
+
+# User Authentication
+![Out-2](https://github.com/user-attachments/assets/8ce4ba9b-233c-43af-b19f-836d94425475)
